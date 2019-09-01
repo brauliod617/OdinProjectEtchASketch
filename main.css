@@ -21,3 +21,10 @@
 #clearBtn {
     margin: 20px;
 }
+
+#rainbowBtn{
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+    font-weight: bold;
+    color: white;
+
+}
