@@ -25,6 +25,9 @@
 #rainbowBtn{
     background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
     font-weight: bold;
-    color: white;
+    color: red;
+}
 
+.backGroundImg {
+    background-image: url('');
 }

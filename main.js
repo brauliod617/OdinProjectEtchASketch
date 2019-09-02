@@ -1,11 +1,10 @@
-const gridContainer = document.createElement('div');
+const gridContainer = document.getElementById('gridContainer')
 const grids = document.createElement("div");
 const clearBtn = document.getElementById('clearBtn');
 const rainbowBtn = document.getElementById('rainbowBtn');
 let isRainbowMode = false;
 
 grids.setAttribute("id", "grid");
-gridContainer.classList.add('center');
 gridContainer.appendChild(grids);
 document.body.appendChild(gridContainer);
 
@@ -15,6 +14,8 @@ function generateGrids(x){
             let grid = document.createElement('div');
             grid.addEventListener('mouseover', pixalate);
             grid.classList.add('grid');
+            grid.style.backgroundColor = 'white';
+            grid.style.filter = 'brightness(100%)';
             grids.appendChild(grid);
         }
     }
@@ -23,31 +24,38 @@ generateGrids(16);
 
 function pixalate(){
     if(isRainbowMode){
-        let random = Math.floor((Math.random() * 7));
-        switch (random) {
-            case 0:
-                this.style.backgroundColor = "violet";
-                break;
-            case 1:
-                this.style.backgroundColor = "indigo";
-                break;
-            case 2:
-                this.style.backgroundColor = "blue";
-                break;
-            case 3:
-                this.style.backgroundColor = "green";
-                break;
-            case 4:
-                this.style.backgroundColor = "yellow";
-                break;
-            case 5:
-                this.style.backgroundColor = "orange";
-                break;
-            case 6:
-                this.style.backgroundColor = "red";
-                break;
+        //if grid is either black or white we paint it random color
+        if(this.style.backgroundColor === 'white' || this.style.backgroundColor === 'black'){
+            let random = Math.floor((Math.random() * 7));
+            switch (random) {
+                case 0:
+                    this.style.backgroundColor = "rgb(238,82,238)";//violet
+                    break;
+                case 1:
+                    this.style.backgroundColor = "rgb(75,00,82)";//indigo
+                    break;
+                case 2:
+                    this.style.backgroundColor = "rgb(00,00,255)";//blue
+                    break;
+                case 3:
+                    this.style.backgroundColor = "rgb(00,80,00)";//green
+                    break;
+                case 4:
+                    this.style.backgroundColor = "rgb(255,255,00)";//yellow
+                    break;
+                case 5:
+                    this.style.backgroundColor = "rgb(255,165,00)";//orange
+                    break;
+                case 6:
+                    this.style.backgroundColor = "rgb(255,00,00)";//red
+                    break;
+            }
+        }else {//if grid is a color, we darken that color by 10%
+            let indexOfClosingBrace = this.style.filter.indexOf(')', 10);
+            let brightnessStr = this.style.filter.substring(11, indexOfClosingBrace-1);
+            this.style.filter = 'brightness(' + (brightnessStr - 10) + "%)";
         }
-    }else {
+    }else {//if rainbow button is unclicked
         this.style.backgroundColor = "black";
     }
 }
@@ -60,23 +68,26 @@ function rainbowMode(){
 }
 function clearScreen(){
     let children = grids.childNodes;
+    let input = prompt("How many squares per side would you like on new grid?");
+    let regex = /^[0-9]+$/;
 
-     let input = prompt("How many squares per side would you like on new grid?");
-     let regex = /^[0-9]+$/;
-     while(!input.match(regex)){
-        input = prompt("please enter a numerical value");
-     }
-     eraseGrids();
+    while(!input.match(regex)){
+       input = prompt("please enter a numerical value");
+    }
+    //need to erase current grids other wise new grids are just append to grids div
+    eraseGrids();
 
-     grids.style.gridTemplateRows = "repeat(" +
-         input + ", " + 480/input + "px [row-start]";
-     grids.style.gridTemplateColumns = "repeat(" +
-         input + ", " + 480/input + "px [col-start]";
+    //divide by 480 so size of etch-a-sketch remains the same
+    //gridTemplateRows = repeat( # of rows, grid size, name)
+    //change css setting for grids div, grids div is parent of grid, where each grid is child
+    grids.style.gridTemplateRows = "repeat(" +
+     input + ", " + 480/input + "px [row-start]";
+    grids.style.gridTemplateColumns = "repeat(" +
+     input + ", " + 480/input + "px [col-start]";
 
-     generateGrids(input);
-
+    generateGrids(input);
+    //set the width and height of each grid div to match that of grid element
     for(let i = 0; i < grids.childElementCount; i++ ){
-        children[i].style.backgroundColor = "white";
         children[i].style.width = (480/input).toString() + "px";
         children[i].style.height = (480/input).toString() + "px";
     }
