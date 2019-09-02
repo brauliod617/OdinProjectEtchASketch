@@ -24,13 +24,27 @@ html {
 }
 
 #clearBtn {
-    margin: 20px;
+    border-width: 5px;
+    border-style: solid;
+}
+
+.buttonDiv {
+    position: relative;
+    top: 7%;
+}
+
+.buttons{
+    display: inline-block;
+    margin: 0px 44px;
 }
 
 #rainbowBtn{
     background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
     font-weight: bold;
     color: red;
+    border-width: 5px;
+    border-style: solid;
+    border-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
 }
 
 .backGroundImg {

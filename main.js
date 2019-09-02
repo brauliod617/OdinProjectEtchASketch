@@ -1,11 +1,28 @@
 const gridContainer = document.getElementById('gridContainer')
 const grids = document.createElement("div");
-const clearBtn = document.getElementById('clearBtn');
-const rainbowBtn = document.getElementById('rainbowBtn');
+const rainbowBtnDiv = document.createElement("div");
+const clearBtnDiv = document.createElement("div");
+const rainbowBtn = document.createElement('button');
+const clearBtn = document.createElement('button');
+const buttonsDiv = document.createElement("div");
 let isRainbowMode = false;
 
+
+
+clearBtn.textContent = "Clear Sketch";
+rainbowBtn.textContent = "Rainbow Mode";
+clearBtn.setAttribute("id", "clearBtn");
+rainbowBtn.setAttribute("id", "rainbowBtn");
+clearBtnDiv.classList.add("buttons");
+rainbowBtnDiv.classList.add("buttons");
 grids.setAttribute("id", "grid");
+buttonsDiv.classList.add("buttonDiv");
+clearBtnDiv.appendChild(clearBtn);
+rainbowBtnDiv.appendChild(rainbowBtn);
+buttonsDiv.appendChild(rainbowBtnDiv);
+buttonsDiv.appendChild(clearBtnDiv);
 gridContainer.appendChild(grids);
+gridContainer.appendChild(buttonsDiv);
 document.body.appendChild(gridContainer);
 
 function generateGrids(x){
