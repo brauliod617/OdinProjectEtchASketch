@@ -1,3 +1,7 @@
+html {
+    background-color: rgb(255, 74, 49);
+}
+
 #grid {
     display: inline-grid;
     grid-template-rows: repeat(16, 30px [row-start]);
@@ -12,6 +16,7 @@
     border: 1px dotted black;
     width: 30px;
     height: 30px;
+    margin-top: 120px;
 }
 
 .grid:hover{
@@ -29,5 +34,11 @@
 }
 
 .backGroundImg {
-    background-image: url('');
+    background-image: url('EtchaSketchStreched.png');
+}
+
+#gridContainer {
+    width: 680px;
+    height: 740px;
+    margin: 0px auto;
 }
