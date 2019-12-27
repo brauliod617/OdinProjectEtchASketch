@@ -7,8 +7,6 @@ const clearBtn = document.createElement('button');
 const buttonsDiv = document.createElement("div");
 let isRainbowMode = false;
 
-
-
 clearBtn.textContent = "Clear Sketch";
 rainbowBtn.textContent = "Rainbow Mode";
 clearBtn.setAttribute("id", "clearBtn");
