@@ -15,3 +15,4 @@ class were I learned a lot more about web development.
 
 The html contents of this page was created almost entirely by Javascript
 
+To get different size etch-a-sketch click on clear sketch and a dialog will appear asking for new size.
