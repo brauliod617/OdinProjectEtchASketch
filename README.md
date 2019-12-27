@@ -1,6 +1,6 @@
 ### Etch-a-Sketch
 
-![Image of Etch-a-Sketch](/screenshot.png) 
+![Image of Etch-a-Sketch](/etch-a-sketchscreenshot.png) 
 
 I completed this project as part of www.theodinproject.com Web Development 101 online course
 that I did over the summer in my spare time. <br/>
